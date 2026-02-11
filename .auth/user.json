@@ -1,0 +1,281 @@
+{
+  "cookies": [
+    {
+      "name": "bh",
+      "value": "EkIiTm90OkEtQnJhbmQiO3Y9Ijk5IiwgIkhlYWRsZXNzQ2hyb21lIjt2PSIxNDUiLCAiQ2hyb21pdW0iO3Y9IjE0NSIqAj8wOgkiV2luZG93cyJgqfyxzAZqHtzK4f8IktihsQOfz+HqA/v68OcN6//99g+J2s+HCA==",
+      "domain": ".yandex.ru",
+      "path": "/",
+      "expires": 1805375018.914454,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "_ym_uid",
+      "value": "1770815019672885715",
+      "domain": ".pellu.xyz",
+      "path": "/",
+      "expires": 1802351019,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "_ym_d",
+      "value": "1770815019",
+      "domain": ".pellu.xyz",
+      "path": "/",
+      "expires": 1802351019,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "_ym_isad",
+      "value": "2",
+      "domain": ".pellu.xyz",
+      "path": "/",
+      "expires": 1770887019,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "RefreshToken",
+      "value": "1fEnFFlJBs1udV3uqCjR9SqwNtGz9qqqt2iGUssE%3D",
+      "domain": ".pellu.xyz",
+      "path": "/",
+      "expires": 1771419819.886282,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "AccessToken",
+      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoibmFmaWdpbm1AeWFuZGV4LnJ1IiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvZW1haWxhZGRyZXNzIjoibWFyYXRAMjIwMGZyZWVmb250cy5jb20iLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjM0NSIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvdXNlcmRhdGEiOiJNYXJhdDIyIE5hZmlnaW4iLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9sb2NhbGl0eSI6IlJVIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiMSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL3VyaSI6Imh0dHBzOi8vcGVsbHUtc3RvcmFnZS5mcmExLmRpZ2l0YWxvY2VhbnNwYWNlcy5jb20vYXZhdGFyLzM0NS93ZWJzaXRlcGxhbmV0LWR1bW15LTU0MFg0MDAgKDEpLndlYnAiLCJuYmYiOjE3NzA4MTUwMTksImV4cCI6MTc3MDgxODYxOSwiaXNzIjoiUGVsbHUiLCJhdWQiOiJQZWxsdVVzZXIifQ.khuIiZmPCRLQ1v4SLY1hWMDyiiLP6-ELh50_w664KNs",
+      "domain": ".pellu.xyz",
+      "path": "/",
+      "expires": 1771419819.886375,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "appVersion",
+      "value": "1.0.2",
+      "domain": ".pellu.xyz",
+      "path": "/",
+      "expires": 1771419819,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "yabs-sid",
+      "value": "723346871770815020",
+      "domain": "mc.yandex.com",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "i",
+      "value": "R2nb4CxDPNQkFtDm85w8VbUyE1WFrTpR6kEZJRdACkVW5BKj5bC8LnAjRj2Oai58lN65Se2bxFMAL+1L86z/tLrFbhM=",
+      "domain": ".yandex.com",
+      "path": "/",
+      "expires": 1805375020.961361,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "yandexuid",
+      "value": "8083998041770815020",
+      "domain": ".yandex.com",
+      "path": "/",
+      "expires": 1805375020.9614,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "yuidss",
+      "value": "8083998041770815020",
+      "domain": ".yandex.com",
+      "path": "/",
+      "expires": 1802351020,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "ymex",
+      "value": "1802351020.yrts.1770815020#1802351020.yrtsi.1770815020",
+      "domain": ".yandex.com",
+      "path": "/",
+      "expires": 1802351020,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "sync_cookie_csrf",
+      "value": "1249870457fake",
+      "domain": ".mc.yandex.com",
+      "path": "/",
+      "expires": 1770815622,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "_ym_visorc",
+      "value": "w",
+      "domain": ".pellu.xyz",
+      "path": "/",
+      "expires": 1770816822,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "sync_cookie_csrf",
+      "value": "2190446798fake",
+      "domain": ".mc.yandex.ru",
+      "path": "/",
+      "expires": 1770815622,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "bh",
+      "value": "EkAiTm90OkEtQnJhbmQiO3Y9Ijk5IiwiSGVhZGxlc3NDaHJvbWUiO3Y9IjE0NSIsIkNocm9taXVtIjt2PSIxNDUiGgN4ODYiDDE0NS4wLjc2MzIuNioCPzA6B1dpbmRvd3NCBjE5LjAuMEoCNjRSWCJOb3Q6QS1CcmFuZCI7dj0iOTkuMC4wLjAiLCJIZWFkbGVzc0Nocm9tZSI7dj0iMTQ1LjAuNzYzMi42IiwiQ2hyb21pdW0iO3Y9IjE0NS4wLjc2MzIuNiJgrvyxzAZqHtzK4f8IktihsQOfz+HqA/v68OcN6//99g+J2s+HCA==",
+      "domain": ".yandex.com",
+      "path": "/",
+      "expires": 1805375022,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "sync_cookie_ok",
+      "value": "synced",
+      "domain": ".mc.yandex.com",
+      "path": "/",
+      "expires": 1770901422,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "yandexuid",
+      "value": "8083998041770815020",
+      "domain": ".yandex.ru",
+      "path": "/",
+      "expires": 1805375023.565378,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "yuidss",
+      "value": "8083998041770815020",
+      "domain": ".yandex.ru",
+      "path": "/",
+      "expires": 1805375023.565448,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "i",
+      "value": "R2nb4CxDPNQkFtDm85w8VbUyE1WFrTpR6kEZJRdACkVW5BKj5bC8LnAjRj2Oai58lN65Se2bxFMAL+1L86z/tLrFbhM=",
+      "domain": ".yandex.ru",
+      "path": "/",
+      "expires": 1805375023.56547,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "m",
+      "value": "d8481b4e-18bb-4e6e-931d-6fc59bbc5b950c8750",
+      "domain": "m.stripe.com",
+      "path": "/",
+      "expires": 1805375027.468541,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "__stripe_mid",
+      "value": "8c98db50-1364-41ff-bc40-594898b35b9602d976",
+      "domain": ".my.pellu.xyz",
+      "path": "/",
+      "expires": 1802351027,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "Strict"
+    },
+    {
+      "name": "__stripe_sid",
+      "value": "6cff0b9d-b0be-44b0-ba2a-6da5708bffa11eb13c",
+      "domain": ".my.pellu.xyz",
+      "path": "/",
+      "expires": 1770816827,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "Strict"
+    }
+  ],
+  "origins": [
+    {
+      "origin": "https://my.pellu.xyz",
+      "localStorage": [
+        {
+          "name": "_ym_synced",
+          "value": "{\"com\":29512148}"
+        },
+        {
+          "name": "_ym102386727_lsid",
+          "value": "467962996958"
+        },
+        {
+          "name": "_ym_retryReqs",
+          "value": "{}"
+        },
+        {
+          "name": "_ym102386727:0_eve",
+          "value": "1770815022833"
+        },
+        {
+          "name": "group-store",
+          "value": "{\"currentGroup\":{\"id\":50495,\"name\":\"My Team for test\",\"roleId\":2,\"userIds\":[345,350,351,346,356]},\"openEditGroup\":false}"
+        },
+        {
+          "name": "_ym_uid",
+          "value": "\"1770815019672885715\""
+        },
+        {
+          "name": "space-store",
+          "value": "{\"currentSpace\":{\"id\":30362,\"name\":\"My Space Test\",\"roleId\":1,\"free\":true,\"userLimit\":5,\"allUserSpace\":[{\"id\":316,\"userId\":345,\"email\":\"marat@2200freefonts.com\",\"firstName\":\"Marat22\",\"lastName\":\"Nafigin\",\"position\":\"tester\",\"avatarUrl\":\"https://pellu-storage.fra1.digitaloceanspaces.com/avatar/345/websiteplanet-dummy-540X400 (1).webp\",\"local\":\"RU\",\"lastActivity\":\"2026-02-09T17:36:16.299567+00:00\",\"fullName\":\"Marat22 Nafigin\"},{\"id\":317,\"userId\":346,\"email\":\"nafiginm@handev.org\",\"firstName\":\"Marat\",\"lastName\":\"Nafigin\",\"position\":null,\"avatarUrl\":null,\"local\":\"RU\",\"lastActivity\":\"2026-02-04T18:16:46.513868+00:00\",\"fullName\":\"Marat Nafigin\"},{\"id\":321,\"userId\":350,\"email\":\"nafiginmarat@yandex.ru\",\"firstName\":\"Test\",\"lastName\":\"Ivanov\",\"position\":null,\"avatarUrl\":null,\"local\":\"RU\",\"lastActivity\":\"2026-02-08T18:39:21.409595+00:00\",\"fullName\":\"Test Ivanov\"},{\"id\":322,\"userId\":351,\"email\":\"61fresh@2200freefonts.com\",\"firstName\":\"Marat\",\"lastName\":\"Nafigin\",\"position\":null,\"avatarUrl\":null,\"local\":\"RU\",\"lastActivity\":\"2025-12-04T17:04:12.24953+00:00\",\"fullName\":\"Marat Nafigin\"},{\"id\":327,\"userId\":356,\"email\":\"npoxlaga@gmail.com\",\"firstName\":\"Марат\",\"lastName\":\"Нафигин\",\"position\":null,\"avatarUrl\":null,\"local\":\"EN-US\",\"lastActivity\":\"0001-01-01T00:00:00+00:00\",\"fullName\":\"Марат Нафигин\"}]}}"
+        },
+        {
+          "name": "_ym102386727:0_reqNum",
+          "value": "4"
+        },
+        {
+          "name": "_ym_wv2rf:102386727:0",
+          "value": "1"
+        },
+        {
+          "name": "user-store",
+          "value": "{\"isAuth\":true,\"isMobile\":false,\"locale\":\"RU\",\"userInfo\":{\"id\":316,\"userId\":345,\"email\":\"marat@2200freefonts.com\",\"firstName\":\"Marat22\",\"lastName\":\"Nafigin\",\"position\":\"tester\",\"avatarUrl\":\"https://pellu-storage.fra1.digitaloceanspaces.com/avatar/345/websiteplanet-dummy-540X400 (1).webp\",\"local\":\"RU\",\"lastActivity\":\"2026-02-09T17:36:16.299567+00:00\",\"fullName\":\"Marat22 Nafigin\"},\"hasVisitedGraph\":true,\"hasVisitedDashboard\":true,\"returnUrl\":null}"
+        }
+      ]
+    }
+  ]
+}
