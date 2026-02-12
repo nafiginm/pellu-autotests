@@ -4,6 +4,12 @@ on:
     branches: [ main ]
   pull_request:
     branches: [ main ]
+  workflow_dispatch:
+    inputs:
+      test_tag:
+        description: 'Tag to run (e.g. @smoke, @reg)'
+        required: true
+        default: '@smoke'
 
 jobs:
   test:
@@ -20,7 +26,7 @@ jobs:
       # --rm удалит контейнер после прогона.
       # -v монтирует папку отчетов, чтобы отчет сохранился на твоем ПК после теста.
       - name: Run Tests in Docker
-        run: docker run --rm -v "${{ github.workspace }}/playwright-report:/app/playwright-report" pellu-tests npx playwright test --grep "@smoke"
+        run: docker run --rm -v "${{ github.workspace }}/playwright-report:/app/playwright-report" pellu-tests npx playwright test --grep "${{ github.event.inputs.test_tag || '@smoke' }}"
 
       - name: Upload Report
         uses: actions/upload-artifact@v4

@@ -13,7 +13,7 @@
   - generic [ref=e19]:
     - generic [ref=e20]:
       - generic [ref=e21]: Check your email
-      - generic [ref=e22]: We've sent a code to j.williams_zzs3im@smscat.com . Enter it below to confirm your email address
+      - generic [ref=e22]: We've sent a code to j.williams_voupzy@smscat.com . Enter it below to confirm your email address
     - generic [ref=e24]:
       - textbox [active] [ref=e26]
       - textbox [ref=e28]
