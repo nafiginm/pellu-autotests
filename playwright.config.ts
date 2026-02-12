@@ -9,7 +9,10 @@ export default defineConfig({
   forbidOnly: !!process.env.CI,
   retries: 1,
   workers: process.env.CI ? 1 : 3,
-  reporter: 'html',
+  reporter: [
+    ['html'], // Оставляем стандартный
+    ['allure-playwright', { outputFolder: 'allure-results' }], // Добавляем Allure
+  ],
 
   // Глобальный таймаут теста (оставляем 60с)
   timeout: 60000,

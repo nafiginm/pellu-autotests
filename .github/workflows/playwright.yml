@@ -26,7 +26,34 @@ jobs:
       # --rm удалит контейнер после прогона.
       # -v монтирует папку отчетов, чтобы отчет сохранился на твоем ПК после теста.
       - name: Run Tests in Docker
-        run: docker run --rm -v "${{ github.workspace }}/playwright-report:/app/playwright-report" pellu-tests npx playwright test --grep "${{ github.event.inputs.test_tag || '@smoke' }}"
+        run: |
+          docker run --rm \
+          -v "${{ github.workspace }}/playwright-report:/app/playwright-report" \
+          -v "${{ github.workspace }}/allure-results:/app/allure-results" \
+          pellu-tests npx playwright test --grep "${{ github.event.inputs.test_tag || '@smoke' }}"
+
+      - name: Get Allure history
+        uses: actions/checkout@v4
+        if: always()
+        continue-on-error: true
+        with:
+          ref: gh-pages
+          path: gh-pages
+
+      - name: Allure Report action from github-actions
+        uses: simple-elf/allure-report-action@master
+        if: always()
+        with:
+          allure_results: allure-results
+          allure_history: allure-history
+          keep_reports: 20
+
+      - name: Deploy report to Github Pages
+        if: always()
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: allure-history
 
       - name: Upload Report
         uses: actions/upload-artifact@v4
