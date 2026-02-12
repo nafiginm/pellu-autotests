@@ -8,6 +8,12 @@ on:
         description: 'Tag to run'
         default: '@smoke'
 
+# Разрешения для работы с GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
 jobs:
   test:
     runs-on: self-hosted
@@ -18,15 +24,25 @@ jobs:
       - name: Build Docker Image
         run: docker build -t pellu-tests .
 
-      - name: Run Tests and Generate Report
-        # Мы запускаем тесты, а затем команду allure generate
+      - name: Run Tests and Generate Allure Report
         run: |
           docker run --rm -v "${{ github.workspace }}/allure-report:/app/allure-report" pellu-tests /bin/bash -c "npx playwright test --grep '${{ github.event.inputs.test_tag || '@smoke' }}'; allure generate allure-results -o allure-report --clean"
 
-      - name: Upload Allure Report
-        uses: actions/upload-artifact@v4
+      # Загружаем папку отчета как специальный артефакт для Pages
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
         if: always()
         with:
-          name: allure-report
           path: allure-report/
-          retention-days: 7
+
+  deploy:
+    needs: test
+    if: always()
+    runs-on: ubuntu-latest # Деплой делает сам GitHub на своих серверах
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
