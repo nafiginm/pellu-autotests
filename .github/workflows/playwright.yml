@@ -21,9 +21,7 @@ jobs:
       - name: Run Tests and Generate Report
         # Мы запускаем тесты, а затем команду allure generate
         run: |
-          docker run --rm \
-          -v "${{ github.workspace }}/allure-report:/app/allure-report" \
-          pellu-tests /bin/bash -c "npx playwright test --grep '${{ github.event.inputs.test_tag || '@smoke' }}'; allure generate allure-results -o allure-report --clean"
+          docker run --rm -v "${{ github.workspace }}/allure-report:/app/allure-report" pellu-tests /bin/bash -c "npx playwright test --grep '${{ github.event.inputs.test_tag || '@smoke' }}'; allure generate allure-results -o allure-report --clean"
 
       - name: Upload Allure Report
         uses: actions/upload-artifact@v4
