@@ -28,21 +28,31 @@ jobs:
         run: |
           docker run --rm -v "${{ github.workspace }}/allure-report:/app/allure-report" pellu-tests /bin/bash -c "npx playwright test --grep '${{ github.event.inputs.test_tag || '@smoke' }}'; allure generate allure-results -o allure-report --clean"
 
-      # Загружаем папку отчета как специальный артефакт для Pages
-      - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v3
+      # Заменяем проблемный upload-pages-artifact на стандартный
+      - name: Upload Report to GitHub
+        uses: actions/upload-artifact@v4
         if: always()
         with:
+          name: allure-report-files
           path: allure-report/
+          retention-days: 1
 
   deploy:
     needs: test
     if: always()
-    runs-on: ubuntu-latest # Деплой делает сам GitHub на своих серверах
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest  # Это ВАЖНО: деплой пойдет на Linux-сервере GitHub
     steps:
+      - name: Download Artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: allure-report-files
+          path: allure-report
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: allure-report/
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
