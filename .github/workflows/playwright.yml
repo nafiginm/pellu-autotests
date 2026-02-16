@@ -8,8 +8,8 @@ on:
         description: 'Tag to run'
         default: '@smoke'
 permissions:
-  contents: write # Для записи истории в ветку gh-pages
-  pages: write    # Для публикации отчета
+  contents: write
+  pages: write
   id-token: write
 jobs:
   test:
@@ -17,25 +17,29 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        shardIndex: [1, 2] # Распараллеливание на 2 потока
+        shardIndex: [1, 2]
         shardTotal: [2]
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
       - name: Build Docker Image
-        # Принудительная пересборка образа для чистоты окружения
         run: docker build --no-cache -t pellu-tests .
       - name: Run Sharded Tests
-        # Выполнение тестов в контейнере и маппинг результатов в папку allure-results
+        # Пробрасываем также папку test-results, где Playwright хранит видео
         run: |
-          docker run --rm -v "${{ github.workspace }}/allure-results:/app/allure-results" pellu-tests /bin/bash -c "npx playwright test --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }}"
+          docker run --rm \
+            -v "${{ github.workspace }}/allure-results:/app/allure-results" \
+            -v "${{ github.workspace }}/test-results:/app/test-results" \
+            pellu-tests /bin/bash -c "npx playwright test --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }}"
       - name: Upload Shard Results
-        # Сохранение результатов каждого шарда в артефакты GitHub
+        # Загружаем и allure-results, и test-results, чтобы видео подтянулось в отчет
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: allure-results-shard-${{ matrix.shardIndex }}
-          path: allure-results/
+          path: |
+            allure-results/
+            test-results/
           retention-days: 1
   report_and_deploy:
     needs: test
@@ -45,14 +49,12 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
       - name: Download all shards
-        # Объединение всех результатов в одну папку all-results
         uses: actions/download-artifact@v4
         with:
           path: all-results
           pattern: allure-results-shard-*
           merge-multiple: true
       - name: Get History
-        # Извлечение истории из gh-pages для сохранения графиков трендов
         run: |
           git clone --branch gh-pages --single-branch https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git old_report || true
           if [ -d "old_report/history" ]; then
@@ -60,22 +62,19 @@ jobs:
             echo "History linked"
           fi
       - name: Install Allure CLI
-        # Установка Allure напрямую на раннер для обхода проблем с правами Docker
         run: |
           wget https://github.com/allure-framework/allure2/releases/download/2.24.0/allure-2.24.0.tgz
           tar -zxf allure-2.24.0.tgz
           sudo mv allure-2.24.0 /opt/allure
           sudo ln -s /opt/allure/bin/allure /usr/bin/allure
       - name: Generate Combined Allure Report
-        # Генерация финального отчета через CLI
+        # Allure CLI автоматически найдет видео в папке, если они там есть
         run: allure generate all-results -o allure-report --clean
       - name: List files for debug
-        # Проверка содержимого папки перед деплоем
         run: |
           echo "Checking allure-report content:"
           ls -R allure-report
       - name: Deploy to gh-pages branch
-        # Пуш готового отчета в ветку gh-pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
