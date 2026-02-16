@@ -1,4 +1,0 @@
-[Mailsac] Выбран адрес: j.williams_n5vy8o@mailsac.com
-[Test] Email: j.williams_n5vy8o@mailsac.com
-[Backend] Статус: 200
-[Test] Ждем инициации отправки...

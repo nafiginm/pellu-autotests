@@ -1,4 +1,0 @@
-[Mailsac] Выбран адрес: j.williams_70w1cd@smscat.com
-[Test] Email: j.williams_70w1cd@smscat.com
-[Backend] Статус: 200
-[Test] Ждем инициации отправки...
