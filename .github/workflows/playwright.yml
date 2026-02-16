@@ -7,52 +7,78 @@ on:
       test_tag:
         description: 'Tag to run'
         default: '@smoke'
-
-# Разрешения для работы с GitHub Pages
 permissions:
-  contents: read
-  pages: write
-  id-token: write
-
+  contents: write # Разрешение на создание и пуш в ветку gh-pages
+  pages: write    # Разрешение на публикацию сайта
+  id-token: write # Нужно для аутентификации деплоя
 jobs:
   test:
     runs-on: self-hosted
+    strategy:
+      fail-fast: false
+      matrix:
+        shardIndex: [1, 2] # Разделение тестов на 2 параллельных потока
+        shardTotal: [2]
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-
       - name: Build Docker Image
         run: docker build -t pellu-tests .
-
-      - name: Run Tests and Generate Allure Report
+      - name: Run Sharded Tests
+        # Запуск тестов в контейнере с пробросом папки allure-results на хост
         run: |
-          docker run --rm -v "${{ github.workspace }}/allure-report:/app/allure-report" pellu-tests /bin/bash -c "npx playwright test --grep '${{ github.event.inputs.test_tag || '@smoke' }}'; allure generate allure-results -o allure-report --clean"
-
-      # Заменяем проблемный upload-pages-artifact на стандартный
-      - name: Upload Report to GitHub
+          docker run --rm -v "${{ github.workspace }}/allure-results:/app/allure-results" pellu-tests /bin/bash -c "npx playwright test --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }}"
+      - name: Upload Shard Results
         uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: allure-report-files
-          path: allure-report/
+          name: allure-results-shard-${{ matrix.shardIndex }}
+          path: allure-results/
           retention-days: 1
-
-  deploy:
+  report_and_deploy:
     needs: test
+    runs-on: ubuntu-latest
     if: always()
-    runs-on: ubuntu-latest  # Это ВАЖНО: деплой пойдет на Linux-сервере GitHub
     steps:
-      - name: Download Artifact
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Download all shards
+        # Собираем результаты всех шардов из хранилища артефактов в одну папку
         uses: actions/download-artifact@v4
         with:
-          name: allure-report-files
-          path: allure-report
-
+          path: all-results
+          pattern: allure-results-shard-*
+          merge-multiple: true
+      - name: Checkout gh-pages
+        # Загружаем текущий сайт из ветки gh-pages, чтобы достать историю прошлых запусков
+        uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+          path: gh-pages-dir
+        continue-on-error: true
+      - name: Link history
+        # Копируем старую историю в новые результаты, чтобы Allure отрисовал графики (Trends)
+        run: |
+          if [ -d "gh-pages-dir/history" ]; then
+            cp -r gh-pages-dir/history all-results/
+            echo "History linked"
+          fi
+      - name: Generate Report
+        # Генерация финального HTML-отчета из объединенных результатов
+        run: |
+          docker run --rm -v "$(pwd)/all-results:/app/allure-results" -v "$(pwd)/allure-report:/app/allure-report" frankescobar/allure-docker-service allure generate allure-results -o allure-report --clean
+      - name: Update History Branch
+        # Пушим обновленный отчет с новой историей обратно в ветку gh-pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./allure-report
+          publish_branch: gh-pages
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: allure-report/
-
       - name: Deploy to GitHub Pages
+        # Финальная публикация отчета на сервер GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
